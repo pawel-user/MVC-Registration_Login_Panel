@@ -1,0 +1,6 @@
+App/
+Core/
+vendor
+
+composer.lock
+nginx*.txt
