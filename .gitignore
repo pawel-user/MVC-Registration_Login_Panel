@@ -1,4 +1,5 @@
 vendor
 
+App/Config.php
 composer.lock
 nginx*.txt
