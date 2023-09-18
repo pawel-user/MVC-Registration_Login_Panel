@@ -6,44 +6,19 @@ use \Core\View;
 
 /**
  * Home controller
- * 
+ *
  * PHP version 7.4
  */
-class Home extends \Core\Controller {
-    /**
-     * Before filter
-     * 
-     * @return void
-     */
-    protected function before() {
-        //echo "(before) ";
-        //return false;
-    }
+class Home extends \Core\Controller
+{
 
     /**
-     * After filter
-     * 
+     * Show the index page
+     *
      * @return void
      */
-    protected function after() {
-        //echo " (after)";
-    }
-
-    /**
-     * How the index page
-     * 
-     * @return void
-     */
-    public function indexAction() {
-        /*
-        View::render('Home/index.php', [
-            'name'      => 'Dave',
-            'colours'   => ['red', 'green', 'blue']
-        ]);
-        */
-        View::renderTemplate('Home/index.html', [
-            'name'      => 'Dave',
-            'colours'   => ['red', 'green', 'blue']
-        ]);
+    public function indexAction()
+    {
+        View::renderTemplate('Home/index.html');
     }
 }
