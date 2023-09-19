@@ -11,13 +11,15 @@ use \App\Models\User;
  * PHP version 7.4
  */
 
- class Login extends \Core\Controller {
+class Login extends \Core\Controller
+{
     /**
      * Show the login page
      * 
      * @return void
      */
-    public function newAction() {
+    public function newAction()
+    {
         View::renderTemplate('Login/new.html');
     }
 
@@ -26,18 +28,51 @@ use \App\Models\User;
      * 
      * @return void
      */
-    public function createAction() {
+    public function createAction()
+    {
         $user = User::authenticate($_POST['email'], $_POST['password']);
 
         if ($user) {
 
+            session_regenerate_id(true);
+
             $_SESSION['user_id'] = $user->id;
 
             $this->redirect('/');
-             
         } else {
 
-            View::renderTemplate('Login/new.html', ['email' => $_POST['email'], ]);
+            View::renderTemplate('Login/new.html', ['email' => $_POST['email'],]);
         }
     }
- }
+
+    /**
+     * log out a user
+     * 
+     * @return void
+     */
+    public function destroyAction()
+    {
+        // Unset all of the session variables.
+        $_SESSION = array();
+
+        // If it's desired to kill the session, also delete the session cookie.
+        // Note: This will destroy the session, and not just the session data!
+        if (ini_get("session.use_cookies")) {
+            $params = session_get_cookie_params();
+            setcookie(
+                session_name(),
+                '',
+                time() - 42000,
+                $params["path"],
+                $params["domain"],
+                $params["secure"],
+                $params["httponly"]
+            );
+        }
+
+        // Finally, destroy the session.
+        session_destroy();
+
+        $this->redirect('/');
+    }
+}
