@@ -3,22 +3,13 @@
 namespace App\Controllers;
 
 use \Core\View;
-use \App\Auth;
 
 /**
  * Items controller (example)
  * 
  * PHP version 7.4
  */
-class Items extends \Core\Controller {
-    /**
-     * Require the user to be authenticated vefore giving access to all methods in the controller
-     * 
-     * @return void
-     */
-    protected function before() {
-        $this->requireLogin();
-    }
+class Items extends Authenticated {
 
     /**
      * Items index
