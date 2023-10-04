@@ -38,4 +38,11 @@ namespace App;
      * @var boolean
      */
     const SHOW_ERRORS = true;
+
+    /**
+     * Secret key for hashing
+     * 
+     * @var boolean
+     */
+    const SECRET_KEY = 'huk9a7eCVwDfYv4VxKykT8Mh2P2XfHCQ';
  }
