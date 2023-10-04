@@ -9,7 +9,7 @@ use \App\Token;
 /**
  * Remembered login model
  * 
- * PHP version 7.0
+ * PHP version 7.4
  */
 #[\AllowDynamicProperties]
 class RememberedLogin extends \Core\Model {
@@ -45,5 +45,15 @@ class RememberedLogin extends \Core\Model {
      */
     public function getUser() {
         return User::findByID($this->user_id);
+    }
+    
+    /**
+     * See if the remember token has expired or not, based on the current system time
+     *
+     * @return boolean True if the token has expired, false otherwise
+     */
+    public function hasExpired()
+    {
+        return strtotime($this->expires_at) < time();
     }
 }
