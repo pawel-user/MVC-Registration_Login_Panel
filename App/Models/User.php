@@ -359,7 +359,7 @@ class User extends \Core\Model
         Mail::send($this->email, 'Account activation', $text, $html);
     }
 
-    /**\Activate the user account with the specified activation token
+    /** Activate the user account with the specified activation token
      * 
      * @param string $value Activation token from the URL
      * 
