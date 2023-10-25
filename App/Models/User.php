@@ -365,6 +365,7 @@ class User extends \Core\Model
      * 
      * @return void
      */
+    
     public static function activate($value) {
         $token = new Token($value);
         $hashed_token = $token->getHash();

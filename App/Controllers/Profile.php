@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use \Core\View;
+use \App\Auth;
 
 /**
  * Profile controller
@@ -17,6 +18,10 @@ use \Core\View;
      * @return void
      */
     public function showAction() {
-        View::renderTemplate('Profile/show.html');
+        View::renderTemplate('Profile/show.html', [
+            'user' => Auth::getUser()
+        ]);
+
     }
  }
+ 
