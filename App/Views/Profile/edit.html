@@ -8,6 +8,9 @@
 
 <script>
 $(document).ready(function () {
+
+        var userId = '{{ user.id }}';
+
         /**
          * Validate the form
          */
@@ -17,7 +20,14 @@ $(document).ready(function () {
                 email: {
                     required: true,
                     email: true,
-                    remote: '/account/validate-email'
+                    remote: {
+                        url: 'account/validate-email',
+                        data: {
+                            ignore_id: function() {
+                                return userId;
+                            }
+                        }
+                    }
                 },
                 password: {
                     required: true,
