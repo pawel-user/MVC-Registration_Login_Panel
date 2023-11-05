@@ -21,7 +21,7 @@ $(document).ready(function () {
                     required: true,
                     email: true,
                     remote: {
-                        url: 'account/validate-email',
+                        url: '/account/validate-email',
                         data: {
                             ignore_id: function() {
                                 return userId;
@@ -65,7 +65,7 @@ $(document).ready(function () {
 </ul>
 {% endif %}
 
-<form method="post" id="formProfile">
+<form id="formProfile" action="/profile/update" method="post">
 
     <div>
         <label for="inputName">Name</label>
