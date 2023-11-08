@@ -1,5 +1,7 @@
 vendor
 
-App/Config.php
+.gitignore
+
+*Config.php
 composer.lock
 nginx*.txt
